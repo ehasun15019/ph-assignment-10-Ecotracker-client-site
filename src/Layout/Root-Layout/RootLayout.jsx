@@ -1,5 +1,3 @@
-// import Footer from 'daisyui/components/footer'
-// import Navbar from 'daisyui/components/navbar'
 import React from 'react'
 import { Outlet } from 'react-router'
 import Navbar from '../../Components/Navbar/Navbar'

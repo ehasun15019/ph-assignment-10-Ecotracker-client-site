@@ -63,7 +63,8 @@ const Navbar = () => {
       <div className="navbar-end">
         <div className="flex gap-3">
           <button className="btn border-[#cbf139] border-2 bg-transparent hover:bg-[#cbf139]">Login</button>
-          <button className="btn border-[#cbf139] border-2 bg-transparent hover:bg-[#cbf139]">Register</button>
+
+          <Link to="/auth/register" className="btn border-[#cbf139] border-2 bg-transparent hover:bg-[#cbf139]">Register</Link>
         </div>
       </div>
     </div>
