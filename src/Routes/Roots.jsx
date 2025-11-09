@@ -3,6 +3,8 @@ import RootLayout from "../Layout/Root-Layout/RootLayout";
 import Home from "../Pages/Home/Home";
 import AuthLayout from "../Layout/Auth-Layout/AuthLayout";
 import Register from "../Pages/Register/Register";
+import Login from "../Pages/Login/Login";
+import ForgotPassword from "../Pages/Forgot-Password/ForgotPassword";
 
 export const router = createBrowserRouter([
     {
@@ -23,6 +25,14 @@ export const router = createBrowserRouter([
             {
                 path: "register",
                 Component: Register,
+            },
+            {
+                path: "login",
+                Component: Login,
+            },
+            {
+                path: "forgot-password",
+                Component: ForgotPassword,
             }
         ]
     }

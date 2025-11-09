@@ -3,6 +3,8 @@ import { AuthContext } from "./AuthContext";
 import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
+  sendPasswordResetEmail,
+  signInWithEmailAndPassword,
   signInWithPopup,
 } from "firebase/auth";
 import { auth } from "../Firebase/firebase.config";
@@ -24,6 +26,21 @@ const AuthProvider = ({ children }) => {
   };
   /* SignInWithPopUp functionality end */
 
+  /* login with email, password functionality start */ 
+  const loginWithEmailPassword = (email, password) => {
+    setLoading(true);
+    return signInWithEmailAndPassword(auth, email, password)
+  }
+  /* login with email, password functionality end */ 
+
+
+  /* Password Reset Email start */ 
+  const sendPasswordLink = (email) => {
+    setLoading(true);
+    return sendPasswordResetEmail(auth, email)
+  }
+  /* Password Reset Email end */ 
+
   // unsubscribe
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -39,6 +56,8 @@ const AuthProvider = ({ children }) => {
   const authInfo = {
     createUserFunction,
     loginFunction,
+    loginWithEmailPassword,
+    sendPasswordLink,
     user,
     loading,
   };
