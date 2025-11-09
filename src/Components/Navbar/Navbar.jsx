@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, NavLink } from "react-router";
 import { assets } from "../../assets/assets";
+import "./Navbar.css";
 
 const Navbar = () => {
   const links = (
@@ -10,15 +11,15 @@ const Navbar = () => {
       </li>
 
       <li>
-        <NavLink to="/">Tips</NavLink>
+        <NavLink>Tips</NavLink>
       </li>
 
       <li>
-        <NavLink to="">Challenges</NavLink>
+        <NavLink>Challenges</NavLink>
       </li>
 
       <li>
-        <NavLink to="/">Events</NavLink>
+        <NavLink>Events</NavLink>
       </li>
     </>
   );
@@ -61,8 +62,8 @@ const Navbar = () => {
 
       <div className="navbar-end">
         <div className="flex gap-3">
-          <button className="btn btn-outline btn-success">Login</button>
-          <button className="btn btn-outline btn-success">Register</button>
+          <button className="btn border-[#cbf139] border-2 bg-transparent hover:bg-[#cbf139]">Login</button>
+          <button className="btn border-[#cbf139] border-2 bg-transparent hover:bg-[#cbf139]">Register</button>
         </div>
       </div>
     </div>
