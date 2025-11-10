@@ -5,6 +5,7 @@ import AuthLayout from "../Layout/Auth-Layout/AuthLayout";
 import Register from "../Pages/Register/Register";
 import Login from "../Pages/Login/Login";
 import ForgotPassword from "../Pages/Forgot-Password/ForgotPassword";
+import AllChallenges from "../Components/Challenges/All-Challenges/AllChallenges";
 
 export const router = createBrowserRouter([
     {
@@ -15,6 +16,10 @@ export const router = createBrowserRouter([
                 path: "/",
                 index: true,
                 Component: Home,
+            },
+            {
+                path: "show-all-challenges",
+                Component: AllChallenges,
             }
         ]
     },

@@ -29,7 +29,7 @@ const Navbar = () => {
       </li>
 
       <li>
-        <NavLink>Challenges</NavLink>
+        <NavLink to="/show-all-challenges">Challenges</NavLink>
       </li>
 
       <li>

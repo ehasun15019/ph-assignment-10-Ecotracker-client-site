@@ -7,7 +7,7 @@ const CardDesign = ({ imageUrl, title, category, participants }) => {
         <img
           src={imageUrl}
           alt={title}
-          className="w-full h-56 object-cover transform transition-transform duration-500 hover:scale-105"
+          className="w-full h-30 md:h-56  object-cover transform transition-transform duration-500 hover:scale-105"
         />
         <span className="absolute top-3 left-3 bg-green-500 text-white text-xs font-semibold px-3 py-1 rounded-full shadow">
           {category}
