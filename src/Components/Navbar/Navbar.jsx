@@ -1,9 +1,23 @@
-import React from "react";
+import React, { use } from "react";
 import { Link, NavLink } from "react-router";
 import { assets } from "../../assets/assets";
 import "./Navbar.css";
+import { AuthContext } from "../../Context/AuthContext";
+import toast from "react-hot-toast";
 
 const Navbar = () => {
+  const { user, signOutFunction } = use(AuthContext);
+
+  const handleSignOut = () => {
+    signOutFunction()
+    .then(() => {
+      toast.success("Logout successfully")
+    })
+    .catch((err) => {
+      toast.error(err.message)
+    })
+  }
+
   const links = (
     <>
       <li>
@@ -61,11 +75,54 @@ const Navbar = () => {
       </div>
 
       <div className="navbar-end">
-        <div className="flex gap-3">
-          <Link to="/auth/login" className="btn border-[#cbf139] border-2 bg-transparent hover:bg-[#cbf139]">Login</Link>
-
-          <Link to="/auth/register" className="btn border-[#cbf139] border-2 bg-transparent hover:bg-[#cbf139]">Register</Link>
-        </div>
+        {user ? (
+          <div className="dropdown dropdown-end">
+            <div
+              tabIndex={0}
+              role="button"
+              className="btn btn-ghost btn-circle avatar"
+            >
+              <div className="w-10 rounded-full">
+                <img
+                  src={user.photoURL || "/default-avatar.png"}
+                  alt="user avatar"
+                />
+              </div>
+            </div>
+            <ul
+              tabIndex={0}
+              className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+            >
+              <li>
+                <span className="font-semibold">{user.displayName}</span>
+              </li>
+              <li>
+                <Link to="/profile">Profile</Link>
+              </li>
+              <li>
+                <Link to="/my-activities">My Activities</Link>
+              </li>
+              <li>
+                <button onClick={handleSignOut}>Logout</button>
+              </li>
+            </ul>
+          </div>
+        ) : (
+          <div className="flex gap-3">
+            <Link
+              to="/auth/login"
+              className="btn border-[#cbf139] border-2 bg-transparent hover:bg-[#cbf139]"
+            >
+              Login
+            </Link>
+            <Link
+              to="/auth/register"
+              className="btn border-[#cbf139] border-2 bg-transparent hover:bg-[#cbf139]"
+            >
+              Register
+            </Link>
+          </div>
+        )}
       </div>
     </div>
   );

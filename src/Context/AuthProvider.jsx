@@ -6,6 +6,8 @@ import {
   sendPasswordResetEmail,
   signInWithEmailAndPassword,
   signInWithPopup,
+  signOut,
+  updateProfile,
 } from "firebase/auth";
 import { auth } from "../Firebase/firebase.config";
 
@@ -26,20 +28,39 @@ const AuthProvider = ({ children }) => {
   };
   /* SignInWithPopUp functionality end */
 
-  /* login with email, password functionality start */ 
+  /* login with email, password functionality start */
   const loginWithEmailPassword = (email, password) => {
     setLoading(true);
-    return signInWithEmailAndPassword(auth, email, password)
-  }
-  /* login with email, password functionality end */ 
+    return signInWithEmailAndPassword(auth, email, password);
+  };
+  /* login with email, password functionality end */
 
-
-  /* Password Reset Email start */ 
+  /* Password Reset Email start */
   const sendPasswordLink = (email) => {
     setLoading(true);
-    return sendPasswordResetEmail(auth, email)
-  }
-  /* Password Reset Email end */ 
+    return sendPasswordResetEmail(auth, email);
+  };
+  /* Password Reset Email end */
+
+  /* signout functionality start */
+  const signOutFunction = () => {
+    setLoading(true);
+    return signOut(auth);
+  };
+  /* signout functionality end */
+
+  /* update profile functionality start */
+  const updateProfileFunction = (name, photoURL) => {
+    if (!auth.currentUser) {
+      return;
+    }
+
+    return updateProfile(auth.currentUser, {
+      displayName: name,
+      photoURL: photoURL,
+    });
+  };
+  /* update profile functionality end */
 
   // unsubscribe
   useEffect(() => {
@@ -58,6 +79,8 @@ const AuthProvider = ({ children }) => {
     loginFunction,
     loginWithEmailPassword,
     sendPasswordLink,
+    signOutFunction,
+    updateProfileFunction,
     user,
     loading,
   };

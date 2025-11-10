@@ -6,9 +6,12 @@ import toast from "react-hot-toast";
 import { Link } from "react-router";
 import { IoEye } from "react-icons/io5";
 import { ImEyeBlocked } from "react-icons/im";
+import useAxios from "../../Hooks/useAxios";
 
 const Register = () => {
-  const { createUserFunction, loginFunction } = use(AuthContext);
+  const { createUserFunction, loginFunction, updateProfileFunction } =
+    use(AuthContext);
+  const axios = useAxios();
 
   //   password related variables
   const [passwordError, setPasswordError] = useState("");
@@ -35,14 +38,40 @@ const Register = () => {
       setPasswordError("");
     }
 
-    console.log(name, photo, email, password);
-
     createUserFunction(email, password)
-      .then((setUser) => {
-        const user = setUser.user;
+      .then((getUser) => {
+        const user = getUser.user;
         console.log(user);
-        toast.success("Yor are register successfully");
-        target.reset();
+
+        const newUser = {
+          name: name,
+          email: email,
+          image: photo,
+        };
+
+        // save to database
+        axios
+          .post("/users", newUser)
+          .then((data) => {
+            if (data.data.message === "user already exits") {
+              toast.error("User already exists!");
+            } else {
+              toast.success("User saved successfully!");
+            }
+
+            // update firebase profile
+            updateProfileFunction(name, photo)
+              .then(() => {
+                toast.success("Profile updated!");
+                target.reset();
+              })
+              .catch((err) => {
+                toast.error("Profile update failed: " + err.message);
+              });
+          })
+          .catch((err) => {
+            toast.error("Database save failed: " + err.message);
+          });
       })
       .catch((err) => {
         toast.error(err.message);
@@ -57,6 +86,26 @@ const Register = () => {
       .then((newUser) => {
         const user = newUser.user;
         console.log(user);
+
+        const newUserData = {
+          name: user.displayName,
+          email: user.email,
+          image: user.photoURL,
+        };
+
+        axios.post("/users", newUserData)
+          .then((data) => {
+            if (data.data.message === "user already exits") {
+              toast("Welcome back! You already have an account.", {
+              });
+            } else {
+              toast.success("New Google user saved to database!");
+            }
+          })
+          .catch((err) => {
+            toast.error("Database save failed: " + err.message);
+          });
+
         toast.success("You are sign up with email successfully");
       })
       .catch((err) => {
@@ -114,7 +163,7 @@ const Register = () => {
                   className="cursor-pointer pe-3 text-xl"
                   onClick={() => setShowPassword((prev) => !prev)}
                 >
-                  {showPassword ? <IoEye /> : <ImEyeBlocked/>}
+                  {showPassword ? <IoEye /> : <ImEyeBlocked />}
                 </div>
               </div>
 
