@@ -6,6 +6,7 @@ import Register from "../Pages/Register/Register";
 import Login from "../Pages/Login/Login";
 import ForgotPassword from "../Pages/Forgot-Password/ForgotPassword";
 import AllChallenges from "../Components/Challenges/All-Challenges/AllChallenges";
+import CardDetails from "../Pages/Card-Details/CardDetails";
 
 export const router = createBrowserRouter([
     {
@@ -20,6 +21,10 @@ export const router = createBrowserRouter([
             {
                 path: "show-all-challenges",
                 Component: AllChallenges,
+            },
+            {
+                path: "challenges/:id",
+                Component: CardDetails
             }
         ]
     },

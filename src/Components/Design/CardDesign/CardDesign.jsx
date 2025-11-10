@@ -1,6 +1,7 @@
 import React from "react";
+import { Link } from "react-router";
 
-const CardDesign = ({ imageUrl, title, category, participants }) => {
+const CardDesign = ({ _id,imageUrl, title, category, participants }) => {
   return (
     <div className="card bg-white border border-gray-100 shadow-md hover:shadow-lg transition-all duration-300 w-full sm:w-[20rem] md:w-[22rem] rounded-2xl overflow-hidden">
       <figure className="relative overflow-hidden">
@@ -25,9 +26,9 @@ const CardDesign = ({ imageUrl, title, category, participants }) => {
         </p>
 
         <div className="card-actions justify-end mt-4">
-          <button className="btn bg-gradient-to-r from-green-400 to-lime-500 border-none text-white font-semibold hover:from-green-500 hover:to-lime-600 transition-all duration-300 text-sm sm:text-base">
+          <Link to={`/challenges/${_id}`} className="btn bg-gradient-to-r from-green-400 to-lime-500 border-none text-white font-semibold hover:from-green-500 hover:to-lime-600 transition-all duration-300 text-sm sm:text-base">
             View Details
-          </button>
+          </Link>
         </div>
       </div>
     </div>
