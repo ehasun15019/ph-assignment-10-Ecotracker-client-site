@@ -10,13 +10,13 @@ const Navbar = () => {
 
   const handleSignOut = () => {
     signOutFunction()
-    .then(() => {
-      toast.success("Logout successfully")
-    })
-    .catch((err) => {
-      toast.error(err.message)
-    })
-  }
+      .then(() => {
+        toast.success("Logout successfully");
+      })
+      .catch((err) => {
+        toast.error(err.message);
+      });
+  };
 
   const links = (
     <>
@@ -30,6 +30,10 @@ const Navbar = () => {
 
       <li>
         <NavLink to="/show-all-challenges">Challenges</NavLink>
+      </li>
+
+      <li>
+        <NavLink to="/challenges/add">Add a challenge</NavLink>
       </li>
 
       <li>
@@ -67,7 +71,12 @@ const Navbar = () => {
           </ul>
         </div>
         <Link className="text-[1.3rem] md:text-3xl font-bold" to="/">
-          <img src={assets.logo} alt="logo" className="w-24" referrerPolicy="no-referrer" />
+          <img
+            src={assets.logo}
+            alt="logo"
+            className="w-24"
+            referrerPolicy="no-referrer"
+          />
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
