@@ -36,7 +36,7 @@ const AddChallengeFrom = () => {
   };
 
   return (
-    <div className="flex justify-center items-center py-10 px-4 bg-base-200 min-h-screen">
+    <div className="flex justify-center items-center py-3 md:py-5 px-4 bg-base-200 min-h-screen">
       <div className="card bg-base-100 w-full max-w-3xl shadow-2xl rounded-2xl border border-gray-200">
         <div className="card-body space-y-6">
           {/* Header */}

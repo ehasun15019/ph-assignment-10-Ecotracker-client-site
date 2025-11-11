@@ -1,11 +1,12 @@
 import React, { use, useState } from "react";
 import { AuthContext } from "../../Context/AuthContext";
 import useAxios from "../../Hooks/useAxios";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 
 const JoinChallenge = () => {
   const { user } = use(AuthContext);
   const { id } = useParams();
+   const navigate = useNavigate()
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const axios = useAxios();
@@ -21,7 +22,12 @@ const JoinChallenge = () => {
     setLoading(true);
     try {
       const res = await axios.post(`/challenges/join/${id}`, {userId: user.uid});
-      setMessage(res.data.message)
+      setMessage(res.data.message);
+
+      if(res.data.message){
+        navigate(`/challenges/${id}`)
+      }
+
     } catch (error) {
       console.error(error);
       setMessage(error.response?.data?.message || "Server error occurred");
