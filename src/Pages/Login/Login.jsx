@@ -2,7 +2,7 @@ import React, { use, useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { ImEyeBlocked } from "react-icons/im";
 import { IoEye } from "react-icons/io5";
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../../Context/AuthContext";
 import toast from "react-hot-toast";
 import { GoogleAuthProvider } from "firebase/auth";
@@ -11,6 +11,11 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [errorHandling, setErrorHandling] = useState("");
   const { loginWithEmailPassword, loginFunction } = use(AuthContext);
+
+  // redirects
+  const navigate = useNavigate();
+  const location = useLocation();
+  const redirects = location.state?.from?.pathname || "/";
 
   // Handle Login with email, password
   const handleLogin = (e) => {
@@ -24,6 +29,7 @@ const Login = () => {
         const users = getUser.user;
         console.log(users);
         toast.success("Login successfully");
+        navigate(redirects, {replace: true});
         target.reset();
       })
       .catch((error) => {
@@ -43,6 +49,7 @@ const Login = () => {
         const user = newUser.user;
         console.log(user);
         toast.success("You are sign up with email successfully");
+        navigate(redirects, {replace: true});
       })
       .catch((err) => {
         toast.error(err.message);

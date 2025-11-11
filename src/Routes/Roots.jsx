@@ -9,6 +9,7 @@ import AllChallenges from "../Components/Challenges/All-Challenges/AllChallenges
 import CardDetails from "../Pages/Card-Details/CardDetails";
 import JoinChallenge from "../Pages/Join-challenge/JoinChallenge";
 import AddChallenge from "../Pages/Add-Challenge/AddChallenge";
+import PrivateRoutes from "./Private-Routes/PrivateRoutes";
 
 export const router = createBrowserRouter([
     {
@@ -30,11 +31,15 @@ export const router = createBrowserRouter([
             },
             {
                 path: "challenges/join/:id",
-                Component: JoinChallenge,
+                element: <PrivateRoutes>
+                    <JoinChallenge></JoinChallenge>
+                </PrivateRoutes>,
             },
             {
                 path: "challenges/add",
-                Component: AddChallenge
+                element: <PrivateRoutes>
+                    <AddChallenge></AddChallenge>
+                </PrivateRoutes>,
             }
         ]
     },
