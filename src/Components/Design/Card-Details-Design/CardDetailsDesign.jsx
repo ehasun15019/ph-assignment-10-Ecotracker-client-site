@@ -1,18 +1,10 @@
 import React from "react";
+import { Link } from "react-router";
 
-const CardDetailsDesign = ({
-  imageUrl,
-  title,
-  category,
-  description,
-  duration,
-  target,
-  participants,
-  impactMetric,
-  createdBy,
-}) => {
+const CardDetailsDesign = ({  id,imageUrl, title, category, description, duration, target, participants, impactMetric, createdBy,}) => {
+
   return (
-    <div className="flex flex-col lg:flex-row gap-10 w-full max-w-7xl mx-auto py-12 px-4">
+    <div className="flex flex-col lg:flex-row gap-10 py-12">
       {/* LEFT — IMAGE & DESCRIPTION */}
       <section className="flex-1 relative">
         {/* Image with overlay effect */}
@@ -78,9 +70,9 @@ const CardDetailsDesign = ({
 
           {/* CTA Button with neumorphism */}
           <div className="mt-8 flex justify-end">
-            <button className="px-6 py-3 rounded-2xl text-white font-semibold bg-gradient-to-r from-green-400 to-lime-500 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 cursor-pointer">
+            <Link to={`/challenges/join/${id}`} className="px-6 py-3 rounded-2xl text-white font-semibold bg-gradient-to-r from-green-400 to-lime-500 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 cursor-pointer">
               Join Challenge
-            </button>
+            </Link>
           </div>
         </div>
       </section>

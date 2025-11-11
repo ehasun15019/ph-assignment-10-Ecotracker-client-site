@@ -26,7 +26,7 @@ const CardDetails = () => {
   }
 
   return (
-    <div className="w-11/12">
+    <div className="w-11/12 mx-auto">
       <CardDetailsDesign
         key={showData._id}
         id={showData._id}
