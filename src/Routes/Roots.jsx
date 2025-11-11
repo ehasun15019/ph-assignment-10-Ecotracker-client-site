@@ -10,11 +10,13 @@ import CardDetails from "../Pages/Card-Details/CardDetails";
 import JoinChallenge from "../Pages/Join-challenge/JoinChallenge";
 import AddChallenge from "../Pages/Add-Challenge/AddChallenge";
 import PrivateRoutes from "./Private-Routes/PrivateRoutes";
+import Error from "../Pages/Error/error";
 
 export const router = createBrowserRouter([
     {
         path: "/",
         element: <RootLayout></RootLayout>,
+        errorElement: <Error></Error>,
         children: [
             {
                 path: "/",
