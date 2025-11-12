@@ -4,6 +4,7 @@ import Counter from '../../Components/Counter/Counter'
 import About from '../../Components/About/About'
 import ActiveChallenges from '../../Components/Challenges/Active-Challenges/ActiveChallenges'
 import RecentTips from '../../Components/Tips/Recent-Tips/RecentTips'
+import UpcomingEvents from '../../Components/Events/UpcomingEvents'
 
 const Home = () => {
   return (
@@ -13,6 +14,7 @@ const Home = () => {
       <About></About>
       <ActiveChallenges></ActiveChallenges>
       <RecentTips></RecentTips>
+      <UpcomingEvents></UpcomingEvents>
     </div>
   )
 }
