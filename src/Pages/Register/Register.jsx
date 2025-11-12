@@ -3,14 +3,13 @@ import { FcGoogle } from "react-icons/fc";
 import { AuthContext } from "../../Context/AuthContext";
 import { GoogleAuthProvider } from "firebase/auth";
 import toast from "react-hot-toast";
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import { IoEye } from "react-icons/io5";
 import { ImEyeBlocked } from "react-icons/im";
 import useAxios from "../../Hooks/useAxios";
 
 const Register = () => {
-  const { createUserFunction, loginFunction, updateProfileFunction } =
-    use(AuthContext);
+  const { createUserFunction, loginFunction, updateProfileFunction } = use(AuthContext);
   const axios = useAxios();
 
   //   password related variables
@@ -18,6 +17,11 @@ const Register = () => {
   const RegexPassword =
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_\-+=[{\]};:'",<.>/?\\|`~]).{6,}$/;
   const [showPassword, setShowPassword] = useState(false);
+
+  // redirect 
+  const navigate = useNavigate();
+  const location = useLocation();
+  const redirect = location.state?.form?.pathname || "/";
 
   // handle Register
   const handleRegister = (e) => {
@@ -64,6 +68,7 @@ const Register = () => {
               .then(() => {
                 toast.success("Profile updated!");
                 target.reset();
+                navigate(redirect, {replace: true})
               })
               .catch((err) => {
                 toast.error("Profile update failed: " + err.message);
@@ -101,6 +106,7 @@ const Register = () => {
             } else {
               toast.success("New Google user saved to database!");
             }
+            navigate(redirect, {replace: true})
           })
           .catch((err) => {
             toast.error("Database save failed: " + err.message);
