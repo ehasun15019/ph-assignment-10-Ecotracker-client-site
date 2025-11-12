@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router";
 
-const CardDetailsDesign = ({  id,imageUrl, title, category, description, duration, target, participants, impactMetric, createdBy,}) => {
+const CardDetailsDesign = ({  id, imageUrl, title, category, description, duration, target, participants, impactMetric, createdBy,}) => {
 
   return (
     <div className="flex flex-col lg:flex-row gap-10 py-12">

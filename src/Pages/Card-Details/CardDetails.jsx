@@ -32,6 +32,7 @@ const CardDetails = () => {
         id={showData._id}
         imageUrl={showData.imageUrl}
         category={showData.category}
+        title={showData.title}
         description={showData.description}
         duration={showData.duration}
         target={showData.target}

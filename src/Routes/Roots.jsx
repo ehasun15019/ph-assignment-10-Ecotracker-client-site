@@ -13,6 +13,7 @@ import PrivateRoutes from "./Private-Routes/PrivateRoutes";
 import Error from "../Pages/Error/error";
 import AllTips from "../Pages/All-Tips/AllTips";
 import AllEvents from "../Pages/All-Events/AllEvents";
+import MyActivities from "../Pages/My-Activities/MyActivities";
 
 export const router = createBrowserRouter([
     {
@@ -55,9 +56,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: "my-activities",
-                element: <PrivateRoutes>
-                    
-                </PrivateRoutes>,
+                element: <MyActivities></MyActivities>
             }
         ]
     },
