@@ -50,7 +50,7 @@ const ActiveChallenges = () => {
       </div>
 
       <div className="pt-6 flex justify-center items-center">
-        <Link to="/show-all-challenges" className="btn btn-wide rounded-full border border-gray-600"><GoArrowUpRight /> Show all</Link>
+        <Link to="/challenges" className="btn btn-wide rounded-full border border-gray-600"><GoArrowUpRight /> Show all</Link>
       </div>
     </div>
   );

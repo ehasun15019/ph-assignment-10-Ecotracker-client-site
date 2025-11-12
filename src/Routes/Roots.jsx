@@ -12,6 +12,7 @@ import AddChallenge from "../Pages/Add-Challenge/AddChallenge";
 import PrivateRoutes from "./Private-Routes/PrivateRoutes";
 import Error from "../Pages/Error/error";
 import AllTips from "../Pages/All-Tips/AllTips";
+import AllEvents from "../Pages/All-Events/AllEvents";
 
 export const router = createBrowserRouter([
     {
@@ -25,7 +26,7 @@ export const router = createBrowserRouter([
                 Component: Home,
             },
             {
-                path: "show-all-challenges",
+                path: "challenges",
                 Component: AllChallenges,
             },
             {
@@ -37,6 +38,10 @@ export const router = createBrowserRouter([
                 Component: AllTips,
             },
             {
+                path: "/all-events",
+                Component: AllEvents,
+            },
+            {
                 path: "challenges/join/:id",
                 element: <PrivateRoutes>
                     <JoinChallenge></JoinChallenge>
@@ -46,6 +51,12 @@ export const router = createBrowserRouter([
                 path: "challenges/add",
                 element: <PrivateRoutes>
                     <AddChallenge></AddChallenge>
+                </PrivateRoutes>,
+            },
+            {
+                path: "my-activities",
+                element: <PrivateRoutes>
+                    
                 </PrivateRoutes>,
             }
         ]
