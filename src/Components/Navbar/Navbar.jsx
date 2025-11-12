@@ -25,7 +25,7 @@ const Navbar = () => {
       </li>
 
       <li>
-        <NavLink>Tips</NavLink>
+        <NavLink to="/all-tips">Tips</NavLink>
       </li>
 
       <li>

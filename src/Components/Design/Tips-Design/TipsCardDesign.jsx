@@ -1,14 +1,7 @@
 import React from "react";
 import { ThumbsUp, Tag } from "lucide-react"; // for icons
 
-const TipsCardDesign = ({
-  title,
-  content,
-  category,
-  author,
-  authorName,
-  upvotes,
-}) => {
+const TipsCardDesign = ({title, content, category, author, authorName, upvotes,}) => {
   return (
     <div className="relative bg-white border border-gray-200 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden w-70 md:w-80 lg:w-96">
       <div className="absolute top-4 right-4 bg-green-100 text-green-800 text-xs font-semibold px-3 py-1 rounded-full flex items-center gap-1">
