@@ -1,10 +1,9 @@
-Docs file: 
-https://drive.google.com/file/d/1A8LdSS8lAOHEmBVU5I720HXGPiA5a7vs/view
+Website live link:  https://ecotracker.ehasun.com/
+backend live link: https://eco-tracker-rho.vercel.app/
 
-
-/my-activities — User progress dashboard (protected)
-/my-activities/:id — User progress dashboard (protected)
-navbar responsive
-
-backend:
-event, tips
+For Routing System: React router
+For Design & Layout: Tailwind Css, Daisy Ui
+For Notification: react-hot-toast
+For icon: React-icons, Lucid-react
+For fetching data: axios
+For Authentication: Firebase
