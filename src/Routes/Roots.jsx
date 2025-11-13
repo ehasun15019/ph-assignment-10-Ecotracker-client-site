@@ -14,6 +14,7 @@ import Error from "../Pages/Error/error";
 import AllTips from "../Pages/All-Tips/AllTips";
 import AllEvents from "../Pages/All-Events/AllEvents";
 import MyActivities from "../Pages/My-Activities/MyActivities";
+import CreatedChallenges from "../Pages/Created-Challenges/CreatedChallenges";
 
 export const router = createBrowserRouter([
     {
@@ -49,14 +50,22 @@ export const router = createBrowserRouter([
                 </PrivateRoutes>,
             },
             {
-                path: "challenges/add",
+                path: "add-challenges",
                 element: <PrivateRoutes>
                     <AddChallenge></AddChallenge>
                 </PrivateRoutes>,
             },
             {
                 path: "my-activities",
-                element: <MyActivities></MyActivities>
+                element: <PrivateRoutes>
+                    <MyActivities></MyActivities>
+                </PrivateRoutes>
+            },
+            {
+                path: "created-challenges",
+                element: <PrivateRoutes>
+                    <CreatedChallenges></CreatedChallenges>
+                </PrivateRoutes>
             }
         ]
     },

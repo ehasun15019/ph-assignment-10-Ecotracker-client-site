@@ -2,6 +2,8 @@ import React, { use, useEffect, useState } from "react";
 import { AuthContext } from "../../Context/AuthContext";
 import useAxios from "../../Hooks/useAxios";
 import Title from "../../Components/Title/Title";
+import { RiDeleteBin5Fill } from "react-icons/ri";
+import toast from "react-hot-toast";
 
 const MyActivities = () => {
   const { user } = use(AuthContext);
@@ -23,6 +25,20 @@ const MyActivities = () => {
         });
     }
   }, [axios, user]);
+
+  const handleDelete = async (id) => {
+    try {
+      const { data } = await axios.delete(`/user-challenges/${id}`);
+
+      if (data.success) {
+        // Correctly update state
+        setActivities((prev) => prev.filter((a) => a._id !== id));
+        toast.success("Deleted Successfully");
+      }
+    } catch (err) {
+      toast.error("Failed to delete challenge:", err);
+    }
+  };
 
   if (loading) {
     return (
@@ -46,8 +62,8 @@ const MyActivities = () => {
       <Title text1={<>My Activities</>} />
 
       <div className="overflow-x-auto">
-        <table className="min-w-full bg-white border border-gray-200 shadow-md">
-          <thead className="bg-gray-100">
+        <table className="min-w-full bg-white border border-gray-200 shadow-md rounded-lg">
+          <thead className="bg-gray-100 hidden md:table-header-group">
             <tr>
               <th className="py-3 px-6 text-left text-gray-700 font-semibold">
                 Challenge Name
@@ -61,8 +77,8 @@ const MyActivities = () => {
               <th className="py-3 px-6 text-left text-gray-700 font-semibold">
                 Joined On
               </th>
-              <th className="py-3 px-6 text-left text-gray-700 font-semibold">
-                Challenge ID
+              <th className="py-3 px-6 text-center text-gray-700 font-semibold">
+                Delete
               </th>
             </tr>
           </thead>
@@ -71,20 +87,40 @@ const MyActivities = () => {
             {activities.map((activity) => (
               <tr
                 key={activity._id}
-                className="border-b border-gray-200 transition-colors"
+                className="border-b border-gray-200 hover:bg-gray-50 transition-colors 
+                     block md:table-row mb-4 md:mb-0 rounded-lg md:rounded-none"
               >
-                <td className="py-4 px-6 text-gray-700">
+                {/* Challenge Name */}
+                <td className="py-2 px-4 md:py-4 md:px-6 text-gray-700 block md:table-cell">
+                  <span className="font-semibold md:hidden">Challenge:</span>{" "}
                   {activity.challengeTitle}
                 </td>
-                <td className="py-4 px-6 text-gray-700">{activity.status}</td>
-                <td className="py-4 px-6 text-gray-700">
+
+                {/* Status */}
+                <td className="py-2 px-4 md:py-4 md:px-6 text-gray-700 block md:table-cell">
+                  <span className="font-semibold md:hidden">Status:</span>{" "}
+                  {activity.status}
+                </td>
+
+                {/* Progress */}
+                <td className="py-2 px-4 md:py-4 md:px-6 text-gray-700 block md:table-cell">
+                  <span className="font-semibold md:hidden">Progress:</span>{" "}
                   {activity.Progress}%
                 </td>
-                <td className="py-4 px-6 text-gray-500">
+
+                {/* Joined On */}
+                <td className="py-2 px-4 md:py-4 md:px-6 text-gray-500 block md:table-cell">
+                  <span className="font-semibold md:hidden">Joined On:</span>{" "}
                   {new Date(activity.joinDate).toLocaleDateString("en-GB")}
                 </td>
-                <td className="py-4 px-6 text-gray-500 text-xs">
-                  {activity.challengeId}
+
+                {/* Delete Button */}
+                <td className="py-2 px-4 md:py-4 md:px-6 flex items-center justify-center md:table-cell">
+                  <RiDeleteBin5Fill
+                    className="cursor-pointer text-red-500 hover:text-red-600 transition"
+                    onClick={() => handleDelete(activity._id)}
+                    size={20}
+                  />
                 </td>
               </tr>
             ))}

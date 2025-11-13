@@ -33,7 +33,7 @@ const Navbar = () => {
       </li>
 
       <li>
-        <NavLink to="/challenges/add">Add a challenge</NavLink>
+        <NavLink to="/add-challenges">Add a challenge</NavLink>
       </li>
 
       <li>
@@ -102,15 +102,16 @@ const Navbar = () => {
               tabIndex={0}
               className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
             >
-              <li>
-                <span className="font-semibold">{user.displayName}</span>
-              </li>
-              <li>
-                <Link to="/profile">Profile</Link>
-              </li>
-              <li>
+              <span className="font-semibold">{user.displayName}</span>
+
+              <li className="mt-2">
                 <Link to="/my-activities">My Activities</Link>
               </li>
+
+              <li className="">
+                <Link to="/created-challenges">Created Challenges</Link>
+              </li>
+
               <li>
                 <button onClick={handleSignOut}>Logout</button>
               </li>
