@@ -1,9 +1,9 @@
-Website live link:  https://ecotracker.ehasun.com/
-backend live link: https://eco-tracker-rho.vercel.app/
+Website live link:  https://ecotracker.ehasun.com/ <br>
+backend live link: https://eco-tracker-rho.vercel.app/ <br>
 
-For Routing System: React router
-For Design & Layout: Tailwind Css, Daisy Ui
-For Notification: react-hot-toast
-For icon: React-icons, Lucid-react
-For fetching data: axios
-For Authentication: Firebase
+For Routing System: React router   <br>  
+For Design & Layout: Tailwind Css, Daisy Ui    <br>
+For Notification: react-hot-toast   <br> 
+For icon: React-icons, Lucid-react   <br>
+For fetching data: axios   <br>
+For Authentication: Firebase   <br>
