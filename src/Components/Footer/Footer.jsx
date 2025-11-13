@@ -3,8 +3,8 @@ import { Link } from "react-router";
 
 const Footer = () => {
   return (
-    <footer className="bg-green-50 text-gray-700 py-8 mt-16 border-t">
-      <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4">
+    <footer className="bg-green-50 text-gray-700 py-8 mt-16">
+      <div className="container px-4 flex flex-col md:flex-row justify-between items-center gap-4 w-11/12 mx-auto">
         {/* Left: Logo + Copy */}
         <div className="text-center md:text-left">
           <h2 className="text-xl font-bold text-green-700">EcoTrack</h2>

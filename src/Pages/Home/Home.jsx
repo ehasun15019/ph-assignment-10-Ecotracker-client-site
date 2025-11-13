@@ -5,6 +5,7 @@ import About from '../../Components/About/About'
 import ActiveChallenges from '../../Components/Challenges/Active-Challenges/ActiveChallenges'
 import RecentTips from '../../Components/Tips/Recent-Tips/RecentTips'
 import UpcomingEvents from '../../Components/Events/UpcomingEvents'
+import HowItWorks from '../../Components/How-Its-Work/HowItsWork'
 
 const Home = () => {
   return (
@@ -15,6 +16,7 @@ const Home = () => {
       <ActiveChallenges></ActiveChallenges>
       <RecentTips></RecentTips>
       <UpcomingEvents></UpcomingEvents>
+      <HowItWorks></HowItWorks>
     </div>
   )
 }
